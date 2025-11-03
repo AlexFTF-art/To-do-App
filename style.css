@@ -1,0 +1,200 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Cambria, sans-serif;
+  background-image: url(Assets/BackG2.jpg);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding-top: 100px;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.mainTitle, .secondTitle{
+  font-size: 2em;
+  padding-bottom: 10px;
+  background: linear-gradient(90deg,
+    #095574,
+    #56edf7,
+    #095574);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorAnimation 6s ease infinite;
+}
+
+.secondTitle {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+
+.mainContainer {
+  color: #fff;
+  background-color: transparent;
+  width: 100%;
+  border-radius: 20px;
+  padding: 15px 20px;
+  border: 2px solid #095574;
+  box-shadow: 1px 5px 10px 8px #095574;
+  position: relative;
+}
+
+
+
+body.light-theme {
+  background-image: url(Assets/BackG1.jpg);
+  color: #000;
+}
+
+
+body.dark-theme {
+  background-color: #121212;
+  color: #fff;
+}
+
+.mainContainer.light-theme {
+  background-color: transparent;
+  border: 2px solid #095574;
+  box-shadow: 1px 5px 10px 8px #095574;
+}
+
+.mainContainer.dark-theme {
+  background-color: #333;
+  border: 2px solid #444;
+  box-shadow: 1px 5px 10px 8px rgba(255, 255, 255, 0.1);
+}
+
+.inputBox.light-theme {
+  background: transparent;
+  color: #000;
+}
+
+.inputBox.dark-theme {
+  background-color: #555;
+  color: #fff;
+}
+
+
+
+.formContainer , .searchContainer {
+  font-size: 20px;
+  padding: 15px 20px;
+  border: 1px solid #56edf7;
+  border-radius: 10px;
+  transition: all 0.3 ease;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.addBtn, .searchTaskBtn , .removeAllBtn {
+  flex: 1;
+  min-width: 100px;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  font-size: 15px;
+  outline: none;
+  border-radius: 10px;
+  padding: auto;
+  cursor: pointer;
+}
+
+
+.btnEffect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #56edf7, transparent);
+}
+
+.btnEffect:hover:before {
+  animation: swipe 1.5s linear infinite;
+}
+
+.btnChangeColor {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 36px;
+  line-height: 1;
+  transition: transform 0.08s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.inputBox {
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #095574;
+  border-radius: 10px;
+  outline: none;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.inputBox:focus {
+  border-color: #56edf7;
+  box-shadow: 0 0 5px rgba(24, 140, 207, 0.4);
+}
+
+.hiddenText {
+  margin-top: 10px;
+  text-align: center;
+  display: none;
+}
+
+.hiddenText.show {
+  display: block;
+  }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  list-style: none;
+  gap: 10px;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: #b65a5a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+}
+
+.completed span {
+  text-decoration: line-through;
+}
+
+
+
+
+@keyframes colorAnimation {
+0% {background-position: 0% 50%;}
+50% {background-position: 50% 100%;}
+100% {background-position: 0% 50%}
+}
+
+@keyframes swipe {
+  to {
+    left: 100%;
+  }
+}
