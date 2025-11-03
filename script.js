@@ -8,12 +8,12 @@ const changeThemeBtn = document.getElementById("changeThemeBtn");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-/* ===== Helpers LocalStorage ===== */
+
 function saveInLocalStorage() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-/* ===== Theme ===== */
+
 function applyTheme(theme) {
   const body = document.body;
   const isDark = theme === "dark";
@@ -33,7 +33,7 @@ function toggleTheme() {
   applyTheme(isDark ? "light" : "dark");
 }
 
-/* ===== Render ===== */
+
 function renderTasks(list = tasks) {
   taskList.innerHTML = "";
   if (!list || list.length === 0) {
@@ -71,7 +71,7 @@ function renderTasks(list = tasks) {
   });
 }
 
-/* ===== CRUD ===== */
+
 function addNewTask() {
   const text = inputTask.value.trim();
   if (!text) return alert("Por favor ingresa una tarea.");
@@ -113,13 +113,13 @@ function changeColorTask(id) {
   picker.addEventListener("blur", () => picker.remove());
 }
 
-/* ===== Search ===== */
+
 function searchTasks() {
   const q = inputSearch.value.toLowerCase();
   renderTasks(tasks.filter(t => t.texto.toLowerCase().includes(q)));
 }
 
-/* ===== Init ===== */
+
 document.addEventListener("DOMContentLoaded", () => {
   loadTheme();
   renderTasks();
@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   changeThemeBtn.addEventListener("click", toggleTheme);
 });
 
+// Funcion nasi
 function removeAllTasks() {
   if (!confirm("¿Eliminar todas las tareas?")) return;
   tasks = [];

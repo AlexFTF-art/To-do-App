@@ -15,7 +15,7 @@ body {
   transition: background-image .4s ease, background-color .4s ease, color .2s ease;
 }
 
-/* === Fondos por tema === */
+
 body.light-theme {
   color: #000;
   background-image: url('./Assets/BackG1.jpg');
@@ -27,7 +27,7 @@ body.dark-theme {
   background-color: #0d1117;
 }
 
-/* === Caja con el mismo estilo que diste (borde + sombra azul) === */
+
 .mainContainer {
   color: currentColor;
   background-color: transparent;
@@ -40,7 +40,6 @@ body.dark-theme {
   position: relative;
 }
 
-/* Títulos animados como tu estilo */
 .mainTitle, .secondTitle{
   font-size: 2em;
   padding-bottom: 10px;
@@ -56,7 +55,6 @@ body.dark-theme {
   margin-top: 10px;
 }
 
-/* Contenedores de formulario y búsqueda */
 .formContainer , .searchContainer {
   font-size: 20px;
   padding: 15px 20px;
@@ -69,7 +67,6 @@ body.dark-theme {
   background: rgba(0,0,0,0.12);
 }
 
-/* Inputs */
 .inputBox {
   color: inherit;
   width: 100%;
@@ -89,7 +86,6 @@ body.light-theme .inputBox::placeholder { color: rgba(0,0,0,0.55); }
   box-shadow: 0 0 5px rgba(24, 140, 207, 0.4);
 }
 
-/* Botones principales */
 .addBtn, .removeAllBtn {
   flex: 0 0 auto;
   min-width: 120px;
@@ -119,7 +115,7 @@ body.light-theme .inputBox::placeholder { color: rgba(0,0,0,0.55); }
 }
 .btnEffect:hover:before { animation: swipe 1.5s linear infinite; }
 
-/* Botón de tema */
+
 .changeThemeBtn {
   border: 0;
   border-radius: 50%;
@@ -134,7 +130,7 @@ body.light-theme .inputBox::placeholder { color: rgba(0,0,0,0.55); }
 }
 .changeThemeBtn:hover { transform: rotate(20deg); }
 
-/* Lista */
+
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));;
@@ -158,7 +154,7 @@ body.light-theme .inputBox::placeholder { color: rgba(0,0,0,0.55); }
   word-break: break-word;
 }
 
-/* Botones de cada tarea */
+
 .btnRemove, .btnComplete, .btnChangeColor {
   border: 0;
   border-radius: 8px;
@@ -181,7 +177,7 @@ body.light-theme .inputBox::placeholder { color: rgba(0,0,0,0.55); }
   color: #ddd;
 }
 
-/* Hidden text */
+
 .hiddenText { margin-top: 10px; text-align: center; display: none; }
 .hiddenText.show { display: block; }
 
