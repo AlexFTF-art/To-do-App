@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>To do App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>To-Do App</title>
 </head>
-<body>
-    <main>
-      <div class="mainContainer">
-        <h1 class="mainTitle">Ingresa tus Tareas</h1>
-        <form class="formContainer">
-          <input type="text" class="inputBox" id="inputTask" placeholder="Escribe una Tarea...">
-          <button class="addBtn btnEffect" id="addTask">Agregar</button>
-        </form>
 
-        <h3 class="secondTitle">Tareas Pendientes:</h3>
-        <div class="searchContainer">
-          <input type="text" class="inputBox" id="inputSearch" placeholder="Busca una Tarea...">
-          <button class="searchTaskBtn btnEffect" id="searchBtn">Buscar</button>
-          <button class="removeAllBtn btnEffect" id="removeAllTask">Eliminar Todo</button>
-          <button class="changeThemeBtn" id="changeThemeBtn">🌙</button>
-        </div>
+<body class="light-theme">
+  <main>
+    <div class="mainContainer">
+      <h1 class="mainTitle">Ingresa tus Tareas</h1>
+      <form class="formContainer">
+        <input type="text" class="inputBox" id="inputTask" placeholder="Escribe una tarea..." />
+        <button class="addBtn btnEffect" id="addTask">Agregar</button>
+      </form>
 
-        <div>
-          <ul class="list" id="taskList">
-          </ul>
-        </div>
-        <p class="hiddenText">Sin Tareas Pendientes</p>
+      <h3 class="secondTitle">Tareas Pendientes:</h3>
+      <div class="searchContainer">
+        <input type="text" class="inputBox" id="inputSearch" placeholder="Busca una tarea..." />
+        <button class="removeAllBtn btnEffect" id="removeAllTask">Eliminar Todo</button>
+        <button class="changeThemeBtn" id="changeThemeBtn" title="Cambiar tema">🌙</button>
       </div>
-    </main>
+
+      <ul class="list" id="taskList"></ul>
+      <p class="hiddenText">Sin Tareas Pendientes</p>
+    </div>
+  </main>
+
   <script src="script.js"></script>
 </body>
+
 </html>

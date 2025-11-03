@@ -5,40 +5,34 @@
 }
 body {
   font-family: Cambria, sans-serif;
-  background-image: url(Assets/BackG2.jpg);
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   padding-top: 100px;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  transition: background-image .4s ease, background-color .4s ease, color .2s ease;
 }
 
-.mainTitle, .secondTitle{
-  font-size: 2em;
-  padding-bottom: 10px;
-  background: linear-gradient(90deg,
-    #095574,
-    #56edf7,
-    #095574);
-  background-size: 400% 400%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: colorAnimation 6s ease infinite;
+/* === Fondos por tema === */
+body.light-theme {
+  color: #000;
+  background-image: url('./Assets/BackG1.jpg');
+  background-color: #e9f7fb;
 }
-
-.secondTitle {
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-
-.mainContainer {
+body.dark-theme {
   color: #fff;
+  background-image: url('./Assets/BackG2.jpg');
+  background-color: #0d1117;
+}
+
+/* === Caja con el mismo estilo que diste (borde + sombra azul) === */
+.mainContainer {
+  color: currentColor;
   background-color: transparent;
   width: 100%;
+  max-width: 720px;
   border-radius: 20px;
   padding: 15px 20px;
   border: 2px solid #095574;
@@ -46,95 +40,38 @@ body {
   position: relative;
 }
 
-
-
-body.light-theme {
-  background-image: url(Assets/BackG1.jpg);
-  color: #000;
+/* Títulos animados como tu estilo */
+.mainTitle, .secondTitle{
+  font-size: 2em;
+  padding-bottom: 10px;
+  background: linear-gradient(90deg,#095574,#56edf7,#095574);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorAnimation 6s ease infinite;
+}
+.secondTitle {
+  font-size: 1rem;
+  margin-top: 10px;
 }
 
-
-body.dark-theme {
-  background-color: #121212;
-  color: #fff;
-}
-
-.mainContainer.light-theme {
-  background-color: transparent;
-  border: 2px solid #095574;
-  box-shadow: 1px 5px 10px 8px #095574;
-}
-
-.mainContainer.dark-theme {
-  background-color: #333;
-  border: 2px solid #444;
-  box-shadow: 1px 5px 10px 8px rgba(255, 255, 255, 0.1);
-}
-
-.inputBox.light-theme {
-  background: transparent;
-  color: #000;
-}
-
-.inputBox.dark-theme {
-  background-color: #555;
-  color: #fff;
-}
-
-
-
+/* Contenedores de formulario y búsqueda */
 .formContainer , .searchContainer {
   font-size: 20px;
   padding: 15px 20px;
   border: 1px solid #56edf7;
   border-radius: 10px;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  background: rgba(0,0,0,0.12);
 }
 
-.addBtn, .searchTaskBtn , .removeAllBtn {
-  flex: 1;
-  min-width: 100px;
-  position: relative;
-  overflow: hidden;
-  border: 0;
-  font-size: 15px;
-  outline: none;
-  border-radius: 10px;
-  padding: auto;
-  cursor: pointer;
-}
-
-
-.btnEffect::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, #56edf7, transparent);
-}
-
-.btnEffect:hover:before {
-  animation: swipe 1.5s linear infinite;
-}
-
-.btnChangeColor {
-  border: 0;
-  border-radius: 8px;
-  padding: 8px 10px;
-  cursor: pointer;
-  font-weight: 600;
-  min-width: 36px;
-  line-height: 1;
-  transition: transform 0.08s ease, filter 0.15s ease, box-shadow 0.15s ease;
-}
-
+/* Inputs */
 .inputBox {
-  color: #fff;
+  color: inherit;
   width: 100%;
   height: 40px;
   padding: 12px;
@@ -145,56 +82,112 @@ body.dark-theme {
   background: transparent;
   transition: all 0.3s ease;
 }
-
+.inputBox::placeholder { color: rgba(255,255,255,0.65); }
+body.light-theme .inputBox::placeholder { color: rgba(0,0,0,0.55); }
 .inputBox:focus {
   border-color: #56edf7;
   box-shadow: 0 0 5px rgba(24, 140, 207, 0.4);
 }
 
-.hiddenText {
-  margin-top: 10px;
-  text-align: center;
-  display: none;
+/* Botones principales */
+.addBtn, .removeAllBtn {
+  flex: 0 0 auto;
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  font-size: 15px;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #095574, #56edf7);
+  color: #fff;
+  font-weight: 700;
+  transition: transform .15s ease;
 }
+.addBtn:hover, .removeAllBtn:hover { transform: translateY(-1px); }
 
-.hiddenText.show {
-  display: block;
-  }
+.btnEffect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #56edf7, transparent);
+}
+.btnEffect:hover:before { animation: swipe 1.5s linear infinite; }
 
+/* Botón de tema */
+.changeThemeBtn {
+  border: 0;
+  border-radius: 50%;
+  padding: 8px 10px;
+  cursor: pointer;
+  min-width: 42px;
+  line-height: 1;
+  font-size: 20px;
+  background: #56edf7;
+  color: #0b2b6b;
+  transition: transform .2s ease;
+}
+.changeThemeBtn:hover { transform: rotate(20deg); }
+
+/* Lista */
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));;
   list-style: none;
   gap: 10px;
   padding: 0;
   margin-top: 10px;
 }
-
 .list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   border-radius: 10px;
   background-color: #b65a5a;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   padding: 10px 15px;
 }
+.list li span {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* Botones de cada tarea */
+.btnRemove, .btnComplete, .btnChangeColor {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 36px;
+  line-height: 1;
+  transition: transform 0.08s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+.btnRemove { background: #d9534f; color: #fff; }
+.btnRemove:hover { filter: brightness(.95); }
+.btnComplete { background: #5cb85c; color: #fff; }
+.btnComplete:hover { filter: brightness(.95); }
+.btnChangeColor { background: #f0ad4e; color: #222; }
+.btnChangeColor:hover { filter: brightness(.95); }
 
 .completed span {
   text-decoration: line-through;
+  color: #ddd;
 }
 
-
-
+/* Hidden text */
+.hiddenText { margin-top: 10px; text-align: center; display: none; }
+.hiddenText.show { display: block; }
 
 @keyframes colorAnimation {
-0% {background-position: 0% 50%;}
-50% {background-position: 50% 100%;}
-100% {background-position: 0% 50%}
+  0% {background-position: 0% 50%;}
+  50% {background-position: 50% 100%;}
+  100% {background-position: 0% 50%}
 }
-
-@keyframes swipe {
-  to {
-    left: 100%;
-  }
-}
+@keyframes swipe { to { left: 100%; } }
